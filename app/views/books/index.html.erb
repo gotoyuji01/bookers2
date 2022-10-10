@@ -1,6 +1,18 @@
 <main>
   <p id ="notice"></p>
   <div class ="container px-5 px-sm-0">
+    
+    <div id ="error_explanation">
+      <% if @book.errors.any? %>
+       <h3><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</h3>
+       <ul>
+        <% @book.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+        <% end %>
+       </ul>
+      <% end %>
+    </div>
+    
     <div class ="row">
       <div class ="col-md-3">
         <h2>User info</h2>
@@ -56,9 +68,9 @@
             <% @books.each do |book| %>
              <tr>
                <td>
-                <%#<%= link_to user_path(user.id) do %> 
+                <%= link_to user_path(book.user.id) do %> 
                   <%= image_tag book.user.get_profile_image(80,80) %>
-                <%#<% end %>
+                <% end %>
                </td>
                <td>
                  <%= link_to book_path(book.id) do %>

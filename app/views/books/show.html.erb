@@ -2,7 +2,9 @@
   <p id ="notice"></p>
   <div class ="container">
     <div class ="row">
-      <div class ="col-md-3"></div>
+      <div class ="col-md-3">
+        <%= render 'users/info',user:@user,book:@books %>
+      </div>
       <div class ="col-md-8 offset-md-1">
         <h2>Book detail</h2>
         <table class ="table">
